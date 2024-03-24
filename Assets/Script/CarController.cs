@@ -26,6 +26,7 @@ public class CarController : MonoBehaviour
     private WheelCollider[] wheels = new WheelCollider[4];
     private GameObject[] wheelMesh = new GameObject[4];
     public GameObject centerOfMass;
+    public ParticleSystem[] dustTrial;
     private Rigidbody rigidbody;
 
     [Header("DEBUG")]
@@ -83,20 +84,27 @@ public class CarController : MonoBehaviour
             }
         }
 
-        // 핸드브레이크 적용 여부에 따른 브레이크 토크 설정
         if (IM.handbrake)
         {
             wheels[3].brakeTorque = wheels[2].brakeTorque = breakPower;
+
+            // 브레이크 파티클 활성화
+            foreach (ParticleSystem ps in dustTrial)
+            {
+                if (!ps.isPlaying)
+                    ps.Play();
+            }
         }
         else
         {
             wheels[3].brakeTorque = wheels[2].brakeTorque = 0;
-        }
 
-        // 부스팅 중일 때 전진 힘 추가
-        if (IM.boosting)
-        {
-            rigidbody.AddForce(Vector3.forward * thrust);
+            // 브레이크 파티클 비활성화
+            foreach (ParticleSystem ps in dustTrial)
+            {
+                if (ps.isPlaying)
+                    ps.Stop();
+            }
         }
     }
 
