@@ -12470,7 +12470,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &999131719
 Transform:
   m_ObjectHideFlags: 0
@@ -12560,6 +12560,8 @@ MonoBehaviour:
   waypoints: {fileID: 0}
   currentWaypotint: {fileID: 0}
   nodes: []
+  distanceOffset: 3
+  steerForce: 0
 --- !u!114 &999131723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18751,11 +18753,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfc12dbb3827e74bbe8ca8a1dd5fc3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drive: 1
+  drive: 2
   KPH: 0
   breakPower: 900000
   DownForceValue: 100
-  moterTorque: 1000
+  moterTorque: 1500
   maxSpeed: 100
   steeringMax: 20
   thrust: 1000
@@ -18811,6 +18813,8 @@ MonoBehaviour:
   waypoints: {fileID: 0}
   currentWaypotint: {fileID: 0}
   nodes: []
+  distanceOffset: 3
+  steerForce: 1.3
 --- !u!54 &1262245396
 Rigidbody:
   m_ObjectHideFlags: 0
