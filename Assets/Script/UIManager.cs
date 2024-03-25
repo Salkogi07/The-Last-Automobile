@@ -52,6 +52,7 @@ public class UIManager : MonoBehaviour
     {
         FinishTimer();
         resultImage.gameObject.SetActive(true);
+        inputManager.handbrake = true;
         inputManager.enabled = false;
     }
 

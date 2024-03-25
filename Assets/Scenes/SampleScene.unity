@@ -11579,6 +11579,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 204686288}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &581219522 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 66b2596e76776954b8bc7aeba3c826a5, type: 3}
+  m_PrefabInstance: {fileID: 1560013334}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &581219525
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 581219522}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2332861813427305680, guid: 66b2596e76776954b8bc7aeba3c826a5, type: 3}
 --- !u!1001 &591168479
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12533,7 +12560,7 @@ MonoBehaviour:
   drive: 2
   KPH: 0
   breakPower: 900000
-  DownForceValue: 100
+  downForceValue: 50
   moterTorque: 1000
   maxSpeed: 80
   steeringMax: 20
@@ -18712,7 +18739,7 @@ MonoBehaviour:
   drive: 2
   KPH: 0
   breakPower: 900000
-  DownForceValue: 100
+  downForceValue: 50
   moterTorque: 2000
   maxSpeed: 100
   steeringMax: 20
@@ -24938,7 +24965,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -927199367670048503, guid: 66b2596e76776954b8bc7aeba3c826a5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 581219525}
   m_SourcePrefab: {fileID: 100100000, guid: 66b2596e76776954b8bc7aeba3c826a5, type: 3}
 --- !u!1 &1566019210
 GameObject:
@@ -25492,6 +25522,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a03415ec9ca9f74b915aa76cd98bd12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rankScore: []
+  stageLevel: 0
+  breakPower: 0
+  downForceValue: 50
+  moterTorque: 100
+  maxSpeed: 100
+  steeringMax: 20
+  thrust: 1000
 --- !u!1 &1803359447
 GameObject:
   m_ObjectHideFlags: 0
