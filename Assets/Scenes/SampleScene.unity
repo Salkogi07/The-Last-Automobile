@@ -20584,7 +20584,7 @@ MonoBehaviour:
   waypoints: {fileID: 0}
   currentWaypotint: {fileID: 0}
   nodes: []
-  distanceOffset: 2
+  distanceOffset: 1
   steerForce: 1.3
 --- !u!54 &1262245396
 Rigidbody:
