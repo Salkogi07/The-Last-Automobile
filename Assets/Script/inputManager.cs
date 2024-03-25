@@ -1,13 +1,9 @@
-using NUnit.Framework;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class inputManager : MonoBehaviour
 {
-    private GameManager gameManager;
-
     internal enum driver
     {
         AI,
@@ -23,25 +19,28 @@ public class inputManager : MonoBehaviour
     public trackWaypoints waypoints;
     public Transform currentWaypotint;
     public List<Transform> nodes = new List<Transform>();
-    private int distanceOffset = 3;
-    private float sterrForce = 1f;
+    [Range(0, 10)] public int distanceOffset;
+    [Range(0, 5)] public float steerForce;
 
     private void Awake()
     {
         waypoints = GameObject.FindGameObjectWithTag("path").GetComponent<trackWaypoints>();
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         nodes = waypoints.nodes;
     }
 
     private void FixedUpdate()
     {
-        if (gameObject.tag == "AI") AIDrvie();
-        else if(gameObject.tag == "Player")
+        switch (driverController)
         {
-            calculateDistanceOfWaypoints();
-            keyboardDrive();
+            case driver.AI:
+                AIDrvie();
+                break;
+            case driver.keyboards:
+                keyboardDrive();
+                break;
         }
+        calculateDistanceOfWaypoints();
     }
 
     private void AIDrvie()
@@ -63,22 +62,14 @@ public class inputManager : MonoBehaviour
         Vector3 position = gameObject.transform.position;
         float distance = Mathf.Infinity;
 
-        for(int i = 0; i < nodes.Count; i++)
+        for (int i = 0; i < nodes.Count; i++)
         {
             Vector3 difference = nodes[i].transform.position - position;
             float currentDistance = difference.magnitude;
-            if(currentDistance < distance)
+            if (currentDistance < distance)
             {
-                if((i + distanceOffset) >= nodes.Count)
-                {
-                    currentWaypotint = nodes[1];
-                    distance = currentDistance;
-                }
-                else
-                {
-                    currentWaypotint = nodes[i + distanceOffset];
-                    distance = currentDistance;
-                }
+                currentWaypotint = nodes[i + distanceOffset];
+                distance = currentDistance;
             }
         }
     }
@@ -88,11 +79,11 @@ public class inputManager : MonoBehaviour
         Vector3 relative = transform.InverseTransformPoint(currentWaypotint.transform.position);
         relative /= relative.magnitude;
 
-        horizontal = (relative.x / relative.magnitude) * sterrForce;
+        horizontal = (relative.x / relative.magnitude) * steerForce;
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(currentWaypotint.position,3);
+        Gizmos.DrawWireSphere(currentWaypotint.position, 3);
     }
 }
