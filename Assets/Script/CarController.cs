@@ -16,7 +16,7 @@ public class CarController : MonoBehaviour
     public float KPH;
     private float radius = 6;
     [SerializeField] private float breakPower;
-    [SerializeField] private float DownForceValue = 50;
+    [SerializeField] private float downForceValue = 50;
     [SerializeField] private int moterTorque = 100;
     [SerializeField] private float maxSpeed = 100f;
     [SerializeField] private float steeringMax = 20;
@@ -164,7 +164,7 @@ public class CarController : MonoBehaviour
     }
     private void addDownForce()
     {
-        rigidbody.AddForce(-transform.up * DownForceValue * rigidbody.velocity.magnitude);
+        rigidbody.AddForce(-transform.up * downForceValue * rigidbody.velocity.magnitude);
     }
     private void getFriction()
     {

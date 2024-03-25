@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class FinishLine : MonoBehaviour
 {
-    private GameManager gameManager;
+    private UIManager uiManager;
 
     private void Awake()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
     }
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
         {
-            gameManager.FinishGame();
+            uiManager.FinishGame();
         }
     }
 }
