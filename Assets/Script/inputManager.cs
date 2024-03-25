@@ -31,6 +31,8 @@ public class inputManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+        calculateDistanceOfWaypoints();
+
         switch (driverController)
         {
             case driver.AI:
@@ -40,7 +42,6 @@ public class inputManager : MonoBehaviour
                 keyboardDrive();
                 break;
         }
-        calculateDistanceOfWaypoints();
     }
 
     private void AIDrvie()
