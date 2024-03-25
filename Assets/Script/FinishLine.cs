@@ -5,6 +5,7 @@ using UnityEngine;
 public class FinishLine : MonoBehaviour
 {
     private UIManager uiManager;
+    bool finish = false;
 
     private void Awake()
     {
@@ -12,9 +13,18 @@ public class FinishLine : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if(!finish)
         {
-            uiManager.FinishGame();
+            if (other.tag == "Player")
+            {
+                uiManager.FinishGameWin();
+                finish = true;
+            }
+            else
+            {
+                uiManager.FinishGameLose();
+                finish = true;
+            }
         }
     }
 }

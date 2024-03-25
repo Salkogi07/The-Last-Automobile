@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     private inputManager inputManager;
 
     public Image resultImage;
+    public Image loseImage;
     public Text resultTime;
 
     //public GameObject neeedle;
@@ -48,7 +49,15 @@ public class UIManager : MonoBehaviour
         speedText.text = (int)vehicleSpeed + "km/h";
     }
 
-    public void FinishGame()
+    public void FinishGameLose()
+    {
+        FinishTimer();
+        loseImage.gameObject.SetActive(true);
+        inputManager.handbrake = true;
+        inputManager.enabled = false;
+    }
+
+    public void FinishGameWin()
     {
         FinishTimer();
         resultImage.gameObject.SetActive(true);
