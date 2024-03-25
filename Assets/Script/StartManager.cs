@@ -8,15 +8,15 @@ public class StartManager : MonoBehaviour
 {
     private GameManager gameManager;
     private inputManager Player;
-    //private inputManager AI;
+    private inputManager AI;
     private Text Countdown;
     private void Awake()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         Player = GameObject.FindGameObjectWithTag("Player").GetComponent<inputManager>();
         Player.enabled = false;
-        //AI = GameObject.FindGameObjectWithTag("AI").GetComponent<inputManager>();
-        //AI.enabled = false;
+        AI = GameObject.FindGameObjectWithTag("AI").GetComponent<inputManager>();
+        AI.enabled = false;
         Countdown = GameObject.Find("Count").GetComponent<Text>();
     }
     void Start()
@@ -45,6 +45,6 @@ public class StartManager : MonoBehaviour
         //시작 소리
         gameManager.StartTimer();
         Player.enabled = true;
-        //AI.enabled = true;
+        AI.enabled = true;
     }
 }

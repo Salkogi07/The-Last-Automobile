@@ -23,12 +23,8 @@ public class inputManager : MonoBehaviour
     public trackWaypoints waypoints;
     public Transform currentWaypotint;
     public List<Transform> nodes = new List<Transform>();
-    private int distanceOffset = 1;
-    private float sterrForce = 1;
-    public int currentNode;
-    public int nextNode = 1;
-    public int currentLap = 0;
-    public int lastLap = 0;
+    private int distanceOffset = 3;
+    private float sterrForce = 1f;
 
     private void Awake()
     {
@@ -38,33 +34,12 @@ public class inputManager : MonoBehaviour
         nodes = waypoints.nodes;
     }
 
-    public void Update()
-    {
-        if(nextNode == currentNode)
-        {
-            nextNode++;
-        }
-
-        if (nextNode >= nodes.Count)
-        {
-            nextNode = 1;
-            currentLap++;
-        }
-
-        if (currentLap > lastLap)
-        {
-            gameManager.FinishGame();
-            return;
-        }
-    }
-
     private void FixedUpdate()
     {
         if (gameObject.tag == "AI") AIDrvie();
         else if(gameObject.tag == "Player")
         {
             calculateDistanceOfWaypoints();
-            currentNode = nodes.IndexOf(currentWaypotint);
             keyboardDrive();
         }
     }

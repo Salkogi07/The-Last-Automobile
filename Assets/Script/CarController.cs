@@ -22,7 +22,7 @@ public class CarController : MonoBehaviour
     [SerializeField] private float steeringMax = 20;
     [SerializeField] private float thrust = 1000f;
     private inputManager IM;
-    private GameObject wheelMeshes, wheelColliders;
+    public GameObject wheelMeshes, wheelColliders;
     private WheelCollider[] wheels = new WheelCollider[4];
     private GameObject[] wheelMesh = new GameObject[4];
     public GameObject centerOfMass;
@@ -144,8 +144,8 @@ public class CarController : MonoBehaviour
     {
         IM = GetComponent<inputManager>();
         rigidbody = GetComponent<Rigidbody>();
-        wheelColliders = GameObject.Find("colliders");
-        wheelMeshes = GameObject.Find("meshes");
+        //wheelColliders = GameObject.Find("colliders");
+        //wheelMeshes = GameObject.Find("meshes");
         wheels[0] = wheelColliders.transform.Find("0").gameObject.GetComponent<WheelCollider>();
         wheels[1] = wheelColliders.transform.Find("1").gameObject.GetComponent<WheelCollider>();
         wheels[2] = wheelColliders.transform.Find("2").gameObject.GetComponent<WheelCollider>();
@@ -159,7 +159,7 @@ public class CarController : MonoBehaviour
 
 
 
-        centerOfMass = GameObject.Find("mass");
+        //centerOfMass = GameObject.Find("mass");
         rigidbody.centerOfMass = centerOfMass.transform.localPosition;
     }
     private void addDownForce()
