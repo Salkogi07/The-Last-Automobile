@@ -8,7 +8,6 @@ public class inputManager : MonoBehaviour
     {
         AI,
         keyboards,
-        mobile
     }
     [SerializeField] driver driverController;
 
@@ -40,8 +39,6 @@ public class inputManager : MonoBehaviour
             case driver.keyboards:
                 keyboardDrive();
                 break;
-            case driver.mobile:
-                break;
         }
         calculateDistanceOfWaypoints();
     }
@@ -58,11 +55,6 @@ public class inputManager : MonoBehaviour
         horizontal = Input.GetAxis("Horizontal");
         handbrake = (Input.GetAxis("Jump") != 0) ? true : false;
         if (Input.GetKey(KeyCode.LeftShift)) boosting = true; else boosting = false;
-    }
-
-    private void mobileDrive()
-    {
-
     }
 
     private void calculateDistanceOfWaypoints()

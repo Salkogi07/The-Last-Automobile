@@ -23,7 +23,7 @@ public class CameraCotroller : MonoBehaviour
         RR = Player.GetComponent<CarController>();
         defaltFOV = Camera.main.fieldOfView;
     }
-
+   
     private void FixedUpdate()
     {
         follow();
