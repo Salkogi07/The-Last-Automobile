@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Stage1_UIManager : MonoBehaviour
@@ -76,5 +77,16 @@ public class Stage1_UIManager : MonoBehaviour
         isFinished = true;
         resultTime.text = timerText.text;
         // 여기에 게임이 종료될 때의 처리를 추가하세요.
+    }
+
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void LoadStage1()
+    {
+        SceneManager.LoadScene("Stage1");
     }
 }
