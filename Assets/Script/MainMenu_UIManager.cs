@@ -28,6 +28,14 @@ public class MainMenu_UIManager : MonoBehaviour
     public float speed = 1f;
     public bool cameraMove = false;
 
+    [Header("Part Coin Text")]
+    public Text textDesertWheel;
+    public Text textMountainsWheel;
+    public Text textCityWheel;
+    public Text textEngine6;
+    public Text textEngine8;
+    public Text textBreakPart;
+
 
     void Start()
     {
@@ -50,6 +58,29 @@ public class MainMenu_UIManager : MonoBehaviour
         }
 
         SetCoin();
+        SetPartCoin();
+    }
+
+    private void SetPartCoin()
+    {
+        PartCoinCheeck(textDesertWheel, gm.desrtWheel_buy_coin);
+        PartCoinCheeck(textMountainsWheel, gm.mountainsWheel_buy_coin);
+        PartCoinCheeck(textCityWheel, gm.cityWheel_buy_coin);
+        PartCoinCheeck(textEngine6, gm.engine6_buy_coin);
+        PartCoinCheeck(textEngine8 , gm.engine8_buy_coin);
+        PartCoinCheeck(textBreakPart, gm.breakPart_buy_coin);
+    }
+
+    private void PartCoinCheeck(Text text, int coin)
+    {
+        if(coin != 0)
+        {
+            text.text = coin + "만원";
+        }
+        else
+        {
+            text.text = coin + "원";
+        }
     }
 
     private void SetCoin()
@@ -60,7 +91,7 @@ public class MainMenu_UIManager : MonoBehaviour
         }
         else
         {
-            textCoint.text = "0";
+            textCoint.text = gm.coin + "원";
         }
     }
 
@@ -105,11 +136,12 @@ public class MainMenu_UIManager : MonoBehaviour
 
     public void Buy_desrtWheel()
     {
-        if(gm.desrtWheel_buy_coin < gm.coin)
+        if(gm.desrtWheel_buy_coin <= gm.coin)
         {
             ImgDesrtWheel.gameObject.SetActive (true);
             gm.desrtWheel_buy = true;
             gm.coin -= gm.desrtWheel_buy_coin;
+            SetMessage("구매에 성공하였습니다.");
         }
         else
         {
@@ -119,10 +151,12 @@ public class MainMenu_UIManager : MonoBehaviour
 
     public void Buy_mountainsWheel()
     {
-        if(gm.mountainsWheel_buy_coin < gm.coin)
+        if(gm.mountainsWheel_buy_coin <= gm.coin)
         {
             ImgMountainsWheel.gameObject.SetActive(true);
             gm.mountainsWheel_buy = true;
+            gm.coin -= gm.mountainsWheel_buy_coin;
+            SetMessage("구매에 성공하였습니다.");
         }
         else
         {
@@ -132,10 +166,12 @@ public class MainMenu_UIManager : MonoBehaviour
 
     public void Buy_cityWheel()
     {
-        if(gm.cityWheel_buy_coin < gm.coin)
+        if(gm.cityWheel_buy_coin <= gm.coin)
         {
             ImgCityWheel.gameObject.SetActive(true);
             gm.cityWheel_buy = true;
+            gm.coin -= gm.cityWheel_buy_coin;
+            SetMessage("구매에 성공하였습니다.");
         }
         else
         {
@@ -145,10 +181,12 @@ public class MainMenu_UIManager : MonoBehaviour
 
     public void Buy_engine6()
     {
-        if(gm.engine6_buy_coin < gm.coin)
+        if(gm.engine6_buy_coin <= gm.coin)
         {
             ImgEngine6.gameObject.SetActive(true);
             gm.engine6_buy = true;
+            gm.coin -= gm.engine6_buy_coin;
+            SetMessage("구매에 성공하였습니다.");
         }
         else
         {
@@ -158,10 +196,12 @@ public class MainMenu_UIManager : MonoBehaviour
 
     public void Buy_engine8()
     {
-        if(gm.engine8_buy_coin < gm.coin)
+        if(gm.engine8_buy_coin <= gm.coin)
         {
             ImgEngine8.gameObject.SetActive(true);
             gm.engine8_buy = true;
+            gm.coin -= gm.engine8_buy_coin;
+            SetMessage("구매에 성공하였습니다.");
         }
         else
         {
@@ -171,10 +211,12 @@ public class MainMenu_UIManager : MonoBehaviour
 
     public void Buy_breakPart()
     {
-        if(gm.breakPart_buy_coin > gm.coin)
+        if(gm.breakPart_buy_coin <= gm.coin)
         {
             ImgBreakPart.gameObject.SetActive(true);
             gm.breakPart_buy = true;
+            gm.coin -= gm.breakPart_buy_coin;
+            SetMessage("구매에 성공하였습니다.");
         }
         else
         {
