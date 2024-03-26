@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
+    private GameManager gm;
+
     internal enum driveType
     {
         frontWheelDriv,
@@ -12,15 +14,17 @@ public class CarController : MonoBehaviour
         allWheelDrive
     }
     [SerializeField] private driveType drive;
+
     [Header("Variables")]
     public float KPH;
     private float radius = 6;
     [SerializeField] private float breakPower;
-    [SerializeField] private float downForceValue = 50;
-    [SerializeField] private int moterTorque = 100;
-    [SerializeField] private float maxSpeed = 100f;
-    [SerializeField] private float steeringMax = 20;
-    [SerializeField] private float thrust = 1000f;
+    [SerializeField] private float downForceValue;
+    [SerializeField] private int moterTorque;
+    [SerializeField] private float maxSpeed;
+    [SerializeField] private float steeringMax;
+    [SerializeField] private float thrust;
+
     private inputManager IM;
     public GameObject wheelMeshes, wheelColliders;
     private WheelCollider[] wheels = new WheelCollider[4];
@@ -35,9 +39,58 @@ public class CarController : MonoBehaviour
     void Start()
     {
         getObjects();
+        getFigure();
     }
 
+    private void getObjects()
+    {
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        IM = GetComponent<inputManager>();
+        rigidbody = GetComponent<Rigidbody>();
+        //wheelColliders = GameObject.Find("colliders");
+        //wheelMeshes = GameObject.Find("meshes");
+        wheels[0] = wheelColliders.transform.Find("0").gameObject.GetComponent<WheelCollider>();
+        wheels[1] = wheelColliders.transform.Find("1").gameObject.GetComponent<WheelCollider>();
+        wheels[2] = wheelColliders.transform.Find("2").gameObject.GetComponent<WheelCollider>();
+        wheels[3] = wheelColliders.transform.Find("3").gameObject.GetComponent<WheelCollider>();
 
+        wheelMesh[0] = wheelMeshes.transform.Find("0").gameObject;
+        wheelMesh[1] = wheelMeshes.transform.Find("1").gameObject;
+        wheelMesh[2] = wheelMeshes.transform.Find("2").gameObject;
+        wheelMesh[3] = wheelMeshes.transform.Find("3").gameObject;
+
+
+
+
+        //centerOfMass = GameObject.Find("mass");
+        rigidbody.centerOfMass = centerOfMass.transform.localPosition;
+    }
+
+    private void getFigure()
+    {
+        if(gameObject.tag == "Player")
+        {
+            breakPower = gm.breakPower;
+            downForceValue = gm.downForceValue;
+            moterTorque = gm.moterTorque;
+            maxSpeed = gm.maxSpeed;
+            steeringMax = gm.steeringMax;
+            thrust = gm.thrust;
+        }
+        else if(gameObject.tag == "AI")
+        {
+            breakPower = gm.AI_breakPower;
+            downForceValue = gm.AI_downForceValue;
+            moterTorque = gm.AI_moterTorque;
+            maxSpeed = gm.AI_maxSpeed;
+            steeringMax = gm.AI_steeringMax;
+            thrust = gm.AI_thrust;
+        }
+        else
+        {
+            Debug.LogError("AI 또는 Player태그가 잘못됨");
+        }
+    }
     private void FixedUpdate()
     {
         addDownForce();
@@ -106,6 +159,11 @@ public class CarController : MonoBehaviour
                     ps.Stop();
             }
         }
+
+        if (IM.boosting)
+        {
+            rigidbody.AddForce(Vector3.forward * thrust);
+        }
     }
 
     private void steerVchicle()
@@ -140,32 +198,12 @@ public class CarController : MonoBehaviour
         }
     }
 
-    private void getObjects()
-    {
-        IM = GetComponent<inputManager>();
-        rigidbody = GetComponent<Rigidbody>();
-        //wheelColliders = GameObject.Find("colliders");
-        //wheelMeshes = GameObject.Find("meshes");
-        wheels[0] = wheelColliders.transform.Find("0").gameObject.GetComponent<WheelCollider>();
-        wheels[1] = wheelColliders.transform.Find("1").gameObject.GetComponent<WheelCollider>();
-        wheels[2] = wheelColliders.transform.Find("2").gameObject.GetComponent<WheelCollider>();
-        wheels[3] = wheelColliders.transform.Find("3").gameObject.GetComponent<WheelCollider>();
 
-        wheelMesh[0] = wheelMeshes.transform.Find("0").gameObject;
-        wheelMesh[1] = wheelMeshes.transform.Find("1").gameObject;
-        wheelMesh[2] = wheelMeshes.transform.Find("2").gameObject;
-        wheelMesh[3] = wheelMeshes.transform.Find("3").gameObject;
-
-
-
-
-        //centerOfMass = GameObject.Find("mass");
-        rigidbody.centerOfMass = centerOfMass.transform.localPosition;
-    }
     private void addDownForce()
     {
         rigidbody.AddForce(-transform.up * downForceValue * rigidbody.velocity.magnitude);
     }
+
     private void getFriction()
     {
         for(int i = 0; i < wheels.Length; i++)

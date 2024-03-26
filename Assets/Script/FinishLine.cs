@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class FinishLine : MonoBehaviour
 {
-    private UIManager uiManager;
+    private Stage1_UIManager uiManager;
     bool finish = false;
 
     private void Awake()
     {
-        uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
+        uiManager = GameObject.Find("UIManager").GetComponent<Stage1_UIManager>();
     }
     private void OnTriggerEnter(Collider other)
     {

@@ -12220,6 +12220,40 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2332861813427305680, guid: 66b2596e76776954b8bc7aeba3c826a5, type: 3}
+--- !u!1 &582408293
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 582408294}
+  m_Layer: 0
+  m_Name: Treps
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &582408294
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582408293}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2053980252}
+  - {fileID: 1224827815}
+  - {fileID: 1151276694}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &591168479
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13709,8 +13743,8 @@ GameObject:
   m_Component:
   - component: {fileID: 999131719}
   - component: {fileID: 999131720}
-  - component: {fileID: 999131722}
   - component: {fileID: 999131721}
+  - component: {fileID: 999131722}
   - component: {fileID: 999131723}
   m_Layer: 0
   m_Name: Car
@@ -13822,14 +13856,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfc12dbb3827e74bbe8ca8a1dd5fc3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drive: 1
+  drive: 2
   KPH: 0
-  breakPower: 900000
-  downForceValue: 50
-  moterTorque: 1000
-  maxSpeed: 80
-  steeringMax: 20
-  thrust: 1000
+  breakPower: 0
+  downForceValue: 0
+  moterTorque: 0
+  maxSpeed: 0
+  steeringMax: 0
+  thrust: 0
   wheelMeshes: {fileID: 1924300775}
   wheelColliders: {fileID: 224110783}
   centerOfMass: {fileID: 243405137}
@@ -19483,14 +19517,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1151276693}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -112.65, y: 1.3271508, z: -25.4}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: -112.65, y: 1.3271508, z: -25.400002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1118540283}
   - {fileID: 1207312980}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 582408294}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &1157944120
 GameObject:
@@ -19965,14 +19999,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1224827814}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: -105.57, y: 1.3271508, z: 17.64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 692783763}
   - {fileID: 1238560277}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 582408294}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &1227035942
 GameObject:
@@ -20506,7 +20540,7 @@ GameObject:
   - component: {fileID: 1262245395}
   - component: {fileID: 1262245393}
   m_Layer: 0
-  m_Name: Car (1)
+  m_Name: AI
   m_TagString: AI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20526,12 +20560,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   drive: 2
   KPH: 0
-  breakPower: 900000
-  downForceValue: 50
-  moterTorque: 2000
-  maxSpeed: 90
-  steeringMax: 20
-  thrust: 1000
+  breakPower: 0
+  downForceValue: 0
+  moterTorque: 0
+  maxSpeed: 0
+  steeringMax: 0
+  thrust: 0
   wheelMeshes: {fileID: 2014429992}
   wheelColliders: {fileID: 595010542}
   centerOfMass: {fileID: 220278754}
@@ -27673,58 +27707,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1733932026}
   m_Mesh: {fileID: -8545447256379345787, guid: add8b8cded0ac164da0553b9490cd96b, type: 3}
---- !u!1 &1799914320
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1799914322}
-  - component: {fileID: 1799914323}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1799914322
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1799914320}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 452.5, y: 207.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1799914323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1799914320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a03415ec9ca9f74b915aa76cd98bd12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rankScore: []
-  stageLevel: 0
-  breakPower: 0
-  downForceValue: 50
-  moterTorque: 100
-  maxSpeed: 100
-  steeringMax: 20
-  thrust: 1000
 --- !u!1 &1803359447
 GameObject:
   m_ObjectHideFlags: 0
@@ -27735,7 +27717,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1803359448}
   - component: {fileID: 1803359450}
-  - component: {fileID: 1803359449}
+  - component: {fileID: 1803359451}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -27758,23 +27740,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1803359449
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1803359447}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15df3a6e7d262834cb8a0475e6ef23df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resultImage: {fileID: 1970527001}
-  loseImage: {fileID: 707945208}
-  resultTime: {fileID: 1423972860}
-  vehicleSpeed: 0
-  timerText: {fileID: 1229511187}
 --- !u!114 &1803359450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27787,6 +27752,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0a90bc1ed8b99044860dd494ce4933f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1803359451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803359447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f939ba1e0cec15c489e09f6af19c8cde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resultImage: {fileID: 1970527001}
+  loseImage: {fileID: 707945208}
+  resultTime: {fileID: 1423972860}
+  vehicleSpeed: 0
+  timerText: {fileID: 1229511187}
 --- !u!1 &1823993540
 GameObject:
   m_ObjectHideFlags: 0
@@ -28678,14 +28660,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2053980251}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.5958214, y: 1.3271508, z: 38.05641}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1932823722}
   - {fileID: 1194526770}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 582408294}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2056471865
 GameObject:
@@ -29547,13 +29529,10 @@ SceneRoots:
   - {fileID: 705507995}
   - {fileID: 963194228}
   - {fileID: 1213013994}
-  - {fileID: 1320810871}
-  - {fileID: 1638431432}
+  - {fileID: 582408294}
   - {fileID: 999131719}
   - {fileID: 1262245397}
   - {fileID: 204686288}
+  - {fileID: 1320810871}
+  - {fileID: 1638431432}
   - {fileID: 1803359448}
-  - {fileID: 1799914322}
-  - {fileID: 2053980252}
-  - {fileID: 1224827815}
-  - {fileID: 1151276694}
