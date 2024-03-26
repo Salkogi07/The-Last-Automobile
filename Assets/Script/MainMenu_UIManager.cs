@@ -6,14 +6,21 @@ using UnityEngine.UI;
 
 public class MainMenu_UIManager : MonoBehaviour
 {
-    GameManager gm;
-    public Image desrtWheel;
-    public Image mountainsWheel;
-    public Image cityWheel;
-    public Image engine6;
-    public Image engine8;
-    public Image breakPart;
+    [Header("System")]
+    public Text textCoint;
+    public Image ImgMessage;
+    public Text message;
 
+    [Header("Part")]
+    GameManager gm;
+    public Image ImgDesrtWheel;
+    public Image ImgMountainsWheel;
+    public Image ImgCityWheel;
+    public Image ImgEngine6;
+    public Image ImgEngine8;
+    public Image ImgBreakPart;
+
+    [Header("RepairShop")]
     public GameObject camer1;
     public GameObject camer2;
     public GameObject camerapoint;
@@ -25,12 +32,12 @@ public class MainMenu_UIManager : MonoBehaviour
     void Start()
     {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        desrtWheel.gameObject.SetActive(false);
-        mountainsWheel.gameObject.SetActive(false);
-        cityWheel.gameObject.SetActive(false);
-        engine6.gameObject.SetActive(false);
-        engine8.gameObject.SetActive(false);
-        breakPart.gameObject.SetActive(false);
+        ImgDesrtWheel.gameObject.SetActive(false);
+        ImgMountainsWheel.gameObject.SetActive(false);
+        ImgCityWheel.gameObject.SetActive(false);
+        ImgEngine6.gameObject.SetActive(false);
+        ImgEngine8.gameObject.SetActive(false);
+        ImgBreakPart.gameObject.SetActive(false);
 
         CheckStore();
     }
@@ -41,69 +48,96 @@ public class MainMenu_UIManager : MonoBehaviour
         {
             camer2.transform.position = Vector3.Lerp(camer2.transform.position, camerapoint.transform.position, Time.deltaTime * speed);
         }
+
+        SetCoin();
+    }
+
+    private void SetCoin()
+    {
+        if(gm.coin != 0)
+        {
+            textCoint.text = GetThousand(gm.coin) + "만원";
+        }
+        else
+        {
+            textCoint.text = "0";
+        }
+    }
+
+    private string GetThousand(int data)
+    {
+        return string.Format("{0:#,###}", data);
     }
 
     private void CheckStore()
     {
         if(gm.desrtWheel == true)
         {
-            desrtWheel.gameObject.SetActive(true);
+            ImgDesrtWheel.gameObject.SetActive(true);
         }
         if(gm.mountainsWheel == true)
         {
-            mountainsWheel.gameObject.SetActive(true);
+            ImgMountainsWheel.gameObject.SetActive(true);
         }
         if(gm.cityWheel == true)
         {
-            cityWheel.gameObject.SetActive(true);
+            ImgCityWheel.gameObject.SetActive(true);
         }
         if(gm.engine6 == true)
         {
-            engine6.gameObject.SetActive(true);
+            ImgEngine6.gameObject.SetActive(true);
         }
         if(gm.engine8 == true)
         {
-            engine8.gameObject.SetActive(true);
+            ImgEngine8.gameObject.SetActive(true);
         }
         if(gm.breakPart == true)
         {
-            breakPart.gameObject.SetActive(true);
+            ImgBreakPart.gameObject.SetActive(true);
         }
     }
 
     public void Buy_desrtWheel()
     {
-        desrtWheel.gameObject.SetActive (true);
-        gm.desrtWheel_buy = true;
+        if(gm.desrtWheel_buy_coin < gm.coin)
+        {
+            ImgDesrtWheel.gameObject.SetActive (true);
+            gm.desrtWheel_buy = true;
+            gm.coin -= gm.desrtWheel_buy_coin;
+        }
+        else
+        {
+            message.text = "자금이 부족합니다.";
+        }
     }
 
     public void Buy_mountainsWheel()
     {
-        mountainsWheel.gameObject.SetActive(true);
+        ImgMountainsWheel.gameObject.SetActive(true);
         gm.mountainsWheel_buy = true;
     }
 
     public void Buy_cityWheel()
     {
-        cityWheel.gameObject.SetActive(true);
+        ImgCityWheel.gameObject.SetActive(true);
         gm.cityWheel_buy = true;
     }
 
     public void Buy_engine6()
     {
-        engine6.gameObject.SetActive(true);
+        ImgEngine6.gameObject.SetActive(true);
         gm.engine6_buy = true;
     }
 
     public void Buy_engine8()
     {
-        engine8.gameObject.SetActive(true);
+        ImgEngine8.gameObject.SetActive(true);
         gm.engine8_buy = true;
     }
 
     public void Buy_breakPart()
     {
-        breakPart.gameObject.SetActive(true);
+        ImgBreakPart.gameObject.SetActive(true);
         gm.breakPart_buy = true;
     }
 
@@ -115,9 +149,9 @@ public class MainMenu_UIManager : MonoBehaviour
         gm.cityWheel = false;
         gm.mountainsWheel = false;
         gm.CheckStatePart();
-        WerePartCheeck(desrtWheel,gm.desrtWheel);
-        WerePartCheeck(mountainsWheel, gm.mountainsWheel);
-        WerePartCheeck(cityWheel, gm.cityWheel);
+        WerePartCheeck(ImgDesrtWheel,gm.desrtWheel);
+        WerePartCheeck(ImgMountainsWheel, gm.mountainsWheel);
+        WerePartCheeck(ImgCityWheel, gm.cityWheel);
     }
 
     public void Were_mountainsWheel()
@@ -126,9 +160,9 @@ public class MainMenu_UIManager : MonoBehaviour
         gm.cityWheel = false;
         gm.desrtWheel= false;
         gm.CheckStatePart();
-        WerePartCheeck(desrtWheel, gm.desrtWheel);
-        WerePartCheeck(mountainsWheel, gm.mountainsWheel);
-        WerePartCheeck(cityWheel, gm.cityWheel);
+        WerePartCheeck(ImgDesrtWheel, gm.desrtWheel);
+        WerePartCheeck(ImgMountainsWheel, gm.mountainsWheel);
+        WerePartCheeck(ImgCityWheel, gm.cityWheel);
     }
 
     public void Were_cityWheel()
@@ -137,9 +171,9 @@ public class MainMenu_UIManager : MonoBehaviour
         gm.mountainsWheel = false;
         gm.desrtWheel = false;
         gm.CheckStatePart();
-        WerePartCheeck(desrtWheel, gm.desrtWheel);
-        WerePartCheeck(cityWheel, gm.cityWheel);
-        WerePartCheeck(mountainsWheel, gm.mountainsWheel);
+        WerePartCheeck(ImgDesrtWheel, gm.desrtWheel);
+        WerePartCheeck(ImgCityWheel, gm.cityWheel);
+        WerePartCheeck(ImgMountainsWheel, gm.mountainsWheel);
     }
 
     public void Were_engine6()
@@ -147,8 +181,8 @@ public class MainMenu_UIManager : MonoBehaviour
         gm.engine6 = !gm.engine6;
         gm.engine8 = false;
         gm.CheckStatePart();
-        WerePartCheeck(engine6, gm.engine6);
-        WerePartCheeck(engine8, gm.engine8);
+        WerePartCheeck(ImgEngine6, gm.engine6);
+        WerePartCheeck(ImgEngine8, gm.engine8);
     }
 
     public void Were_engine8()
@@ -156,15 +190,15 @@ public class MainMenu_UIManager : MonoBehaviour
         gm.engine8 = !gm.engine8;
         gm.engine6 = false;
         gm.CheckStatePart();
-        WerePartCheeck(engine6, gm.engine6);
-        WerePartCheeck(engine8, gm.engine8);
+        WerePartCheeck(ImgEngine6, gm.engine6);
+        WerePartCheeck(ImgEngine8, gm.engine8);
     }
 
     public void Were_breakPart()
     {
         gm.breakPart = !gm.breakPart;
         gm.CheckStatePart();
-        WerePartCheeck(breakPart, gm.breakPart);
+        WerePartCheeck(ImgBreakPart, gm.breakPart);
     }
 
     public void RepairShop()

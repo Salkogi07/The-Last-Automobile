@@ -29,11 +29,22 @@ public class GameManager : MonoBehaviour
 
     [Header("Store")]
     public bool desrtWheel_buy = false;
+    public int desrtWheel_buy_coin = 300;
+    [Space(5)]
     public bool mountainsWheel_buy = false;
+    public int mountainsWheel_buy_coin = 300;
+    [Space(5)]
     public bool cityWheel_buy = false;
+    public int cityWheel_buy_coin = 300;
+    [Space(5)]
     public bool engine6_buy = false;
+    public int engine6_buy_coin = 1000;
+    [Space(5)]
     public bool engine8_buy = false;
+    public int engine8_buy_coin = 5000;
+    [Space(5)]
     public bool breakPart_buy = false;
+    public int breakPart_buy_coin = 200;
 
     [Header("Were")]
     public bool desrtWheel = false;

@@ -243,11 +243,17 @@ MonoBehaviour:
   AI_steeringMax: 20
   AI_thrust: 1000
   desrtWheel_buy: 0
+  desrtWheel_buy_coin: 10000
   mountainsWheel_buy: 0
+  mountainsWheel_buy_coin: 1000000
   cityWheel_buy: 0
+  cityWheel_buy_coin: 1000000
   engine6_buy: 0
+  engine6_buy_coin: 1000000
   engine8_buy: 0
+  engine8_buy_coin: 1000000
   breakPart_buy: 0
+  breakPart_buy_coin: 1000000
   desrtWheel: 0
   mountainsWheel: 0
   cityWheel: 0
@@ -1855,12 +1861,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4051d9626c65a5a49a804a494f3eec52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  desrtWheel: {fileID: 1983652526}
-  mountainsWheel: {fileID: 1203592933}
-  cityWheel: {fileID: 1045297370}
-  engine6: {fileID: 1902421443}
-  engine8: {fileID: 908099439}
-  breakPart: {fileID: 1701365222}
+  textCoint: {fileID: 1459602462}
+  ImgDesrtWheel: {fileID: 1686822140}
+  ImgMountainsWheel: {fileID: 2030665719}
+  ImgCityWheel: {fileID: 768627911}
+  ImgEngine6: {fileID: 590041462}
+  ImgEngine8: {fileID: 482441960}
+  ImgBreakPart: {fileID: 1721917567}
   camer1: {fileID: 1038557630}
   camer2: {fileID: 1798295424}
   camerapoint: {fileID: 1350649499}
@@ -4371,7 +4378,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 100, y: 0}
-  m_SizeDelta: {x: 290, y: 50}
+  m_SizeDelta: {x: 330, y: 50}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1459602462
 MonoBehaviour:
@@ -6184,7 +6191,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 100}
+  m_SizeDelta: {x: 450, y: 100}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1862295037
 MonoBehaviour:
