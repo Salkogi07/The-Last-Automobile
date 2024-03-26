@@ -94,24 +94,4 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(0);
         }
     }
-
-    public void LoadMainMenu()
-    {
-        SceneManager.LoadScene("MainMenu");
-    }
-
-    public void LoadStage1()
-    {
-        SceneManager.LoadScene("Stage1");
-    }
-
-    public void LoadStage2()
-    {
-
-    }
-
-    public void LoadStage3()
-    {
-
-    }
 }
