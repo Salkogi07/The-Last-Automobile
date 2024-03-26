@@ -111,38 +111,60 @@ public class MainMenu_UIManager : MonoBehaviour
     //부품 변경
     public void Were_desrtWheel()
     {
-        gm.desrtWheel = true;
+        gm.desrtWheel = !gm.desrtWheel;
+        gm.cityWheel = false;
+        gm.mountainsWheel = false;
         gm.CheckStatePart();
+        WerePartCheeck(desrtWheel,gm.desrtWheel);
+        WerePartCheeck(mountainsWheel, gm.mountainsWheel);
+        WerePartCheeck(cityWheel, gm.cityWheel);
     }
 
     public void Were_mountainsWheel()
     {
-        gm.mountainsWheel = true;
+        gm.mountainsWheel = !gm.mountainsWheel;
+        gm.cityWheel = false;
+        gm.desrtWheel= false;
         gm.CheckStatePart();
+        WerePartCheeck(desrtWheel, gm.desrtWheel);
+        WerePartCheeck(mountainsWheel, gm.mountainsWheel);
+        WerePartCheeck(cityWheel, gm.cityWheel);
     }
 
     public void Were_cityWheel()
     {
-        gm.cityWheel = true;
+        gm.cityWheel = !gm.cityWheel;
+        gm.mountainsWheel = false;
+        gm.desrtWheel = false;
         gm.CheckStatePart();
+        WerePartCheeck(desrtWheel, gm.desrtWheel);
+        WerePartCheeck(cityWheel, gm.cityWheel);
+        WerePartCheeck(mountainsWheel, gm.mountainsWheel);
     }
 
     public void Were_engine6()
     {
-        gm.engine6 = true;
+        gm.engine6 = !gm.engine6;
+        gm.engine8 = false;
         gm.CheckStatePart();
+        WerePartCheeck(engine6, gm.engine6);
+        WerePartCheeck(engine8, gm.engine8);
     }
 
     public void Were_engine8()
     {
-        gm.engine8 = true;
+        gm.engine8 = !gm.engine8;
+        gm.engine6 = false;
         gm.CheckStatePart();
+        WerePartCheeck(engine6, gm.engine6);
+        WerePartCheeck(engine8, gm.engine8);
     }
 
     public void Were_breakPart()
     {
-        gm.breakPart = true;
+        gm.breakPart = !gm.breakPart;
         gm.CheckStatePart();
+        WerePartCheeck(breakPart, gm.breakPart);
     }
 
     public void RepairShop()
@@ -158,5 +180,17 @@ public class MainMenu_UIManager : MonoBehaviour
         camer2.transform.position = cameraBackpoint.transform.position;
         camer1.gameObject.SetActive(true);
         camer2.gameObject.SetActive(false);
+    }
+
+    public void WerePartCheeck(Image img, bool part)
+    {
+        if(part == true)
+        {
+            img.color = Color.green;
+        }
+        else
+        {
+            img.color = new Color(164/255f,169/255f,170/255f);
+        }
     }
 }

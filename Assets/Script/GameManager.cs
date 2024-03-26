@@ -50,6 +50,11 @@ public class GameManager : MonoBehaviour
 
     public void CheckStatePart()
     {
+        if(engine6 == false && engine8 == false)
+        {
+            maxSpeed = 80f;
+            moterTorque = 700;
+        }
         if(engine6 == true)
         {
             maxSpeed = 120f;
@@ -63,6 +68,10 @@ public class GameManager : MonoBehaviour
         if(breakPart == true)
         {
             breakPower = 9000000f;
+        }
+        else
+        {
+            breakPower = 0f;
         }
     }
 
