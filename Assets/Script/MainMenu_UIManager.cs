@@ -14,6 +14,14 @@ public class MainMenu_UIManager : MonoBehaviour
     public Image engine8;
     public Image breakPart;
 
+    public GameObject camer1;
+    public GameObject camer2;
+    public GameObject camerapoint;
+    public GameObject cameraBackpoint;
+    public float speed = 1f;
+    public bool cameraMove = false;
+
+
     void Start()
     {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -25,6 +33,14 @@ public class MainMenu_UIManager : MonoBehaviour
         breakPart.gameObject.SetActive(false);
 
         CheckStore();
+    }
+
+    private void Update()
+    {
+        if (cameraMove)
+        {
+            camer2.transform.position = Vector3.Lerp(camer2.transform.position, camerapoint.transform.position, Time.deltaTime * speed);
+        }
     }
 
     private void CheckStore()
@@ -127,5 +143,20 @@ public class MainMenu_UIManager : MonoBehaviour
     {
         gm.breakPart = true;
         gm.CheckStatePart();
+    }
+
+    public void RepairShop()
+    {
+        camer1.gameObject.SetActive(false);
+        camer2.gameObject.SetActive(true);
+        cameraMove = true;
+    }
+
+    public void RepairShopBack()
+    {
+        cameraMove = false;
+        camer2.transform.position = cameraBackpoint.transform.position;
+        camer1.gameObject.SetActive(true);
+        camer2.gameObject.SetActive(false);
     }
 }
