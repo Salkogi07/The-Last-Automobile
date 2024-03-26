@@ -97,6 +97,12 @@ public class MainMenu_UIManager : MonoBehaviour
         }
     }
 
+    private void SetMessage(string msg)
+    {
+        ImgMessage.gameObject.SetActive(true);
+        message.text = msg;
+    }
+
     public void Buy_desrtWheel()
     {
         if(gm.desrtWheel_buy_coin < gm.coin)
@@ -107,38 +113,73 @@ public class MainMenu_UIManager : MonoBehaviour
         }
         else
         {
-            message.text = "자금이 부족합니다.";
+            SetMessage("자금이 부족합니다.");
         }
     }
 
     public void Buy_mountainsWheel()
     {
-        ImgMountainsWheel.gameObject.SetActive(true);
-        gm.mountainsWheel_buy = true;
+        if(gm.mountainsWheel_buy_coin < gm.coin)
+        {
+            ImgMountainsWheel.gameObject.SetActive(true);
+            gm.mountainsWheel_buy = true;
+        }
+        else
+        {
+            SetMessage("자금이 부족합니다.");
+        }
     }
 
     public void Buy_cityWheel()
     {
-        ImgCityWheel.gameObject.SetActive(true);
-        gm.cityWheel_buy = true;
+        if(gm.cityWheel_buy_coin < gm.coin)
+        {
+            ImgCityWheel.gameObject.SetActive(true);
+            gm.cityWheel_buy = true;
+        }
+        else
+        {
+            SetMessage("자금이 부족합니다.");
+        }
     }
 
     public void Buy_engine6()
     {
-        ImgEngine6.gameObject.SetActive(true);
-        gm.engine6_buy = true;
+        if(gm.engine6_buy_coin < gm.coin)
+        {
+            ImgEngine6.gameObject.SetActive(true);
+            gm.engine6_buy = true;
+        }
+        else
+        {
+            SetMessage("자금이 부족합니다.");
+        }
     }
 
     public void Buy_engine8()
     {
-        ImgEngine8.gameObject.SetActive(true);
-        gm.engine8_buy = true;
+        if(gm.engine8_buy_coin < gm.coin)
+        {
+            ImgEngine8.gameObject.SetActive(true);
+            gm.engine8_buy = true;
+        }
+        else
+        {
+            SetMessage("자금이 부족합니다.");
+        }
     }
 
     public void Buy_breakPart()
     {
-        ImgBreakPart.gameObject.SetActive(true);
-        gm.breakPart_buy = true;
+        if(gm.breakPart_buy_coin > gm.coin)
+        {
+            ImgBreakPart.gameObject.SetActive(true);
+            gm.breakPart_buy = true;
+        }
+        else
+        {
+            SetMessage("자금이 부족합니다.");
+        }
     }
 
 
