@@ -7,9 +7,28 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [Header("System")]
-    public float[] rankScore = new float[5];
+    public float[] rankScoreStage1 = new float[5];
+    public float[] rankScoreStage2 = new float[5];
+    public float[] rankScoreStage3 = new float[5];
     public int stageLevel = 0;
     public int coin = 0;
+    public int getCoin = 0;
+
+    [Header("Item")]
+    public int item1_coin100 = 0;
+    [SerializeField] private int coin_value1 = 100;
+    [Space(5)]
+    public int item2_coin500 = 0;
+    [SerializeField] private int coin_value2 = 500;
+    [Space(5)]
+    public int item3_coin1000 = 0;
+    [SerializeField] private int coin_value3 = 1000;
+    [Space(5)]
+    public int item4_fast = 0;
+    [SerializeField] private int fast_value1 = 1000;
+    [Space(5)]
+    public int item5_veryfast = 0;
+    [SerializeField] private int fast_value2 = 2000;
 
     [Header("Car")]
     public float breakPower = 0f;
@@ -17,7 +36,8 @@ public class GameManager : MonoBehaviour
     public int moterTorque = 700;
     public float maxSpeed = 80f;
     public float steeringMax = 20f;
-    public float thrust = 0f;
+    public float thrust1 = 1000f;
+    public float thrust2 = 3000f;
 
     [Header("AI Car")]
     public float AI_breakPower = 900000f;
@@ -86,12 +106,27 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene("Stage1");
         }
+    }
+
+    public void FinishGame()
+    {
+        int coin100 = item1_coin100 * coin_value1;
+        int coin500 = item2_coin500 * coin_value2;
+        int coin1000 = item3_coin1000 * coin_value3;
+        getCoin = coin100 + coin500 + coin1000;
+        coin = coin + getCoin;
+
+        item1_coin100 = 0;
+        item2_coin500 = 0;
+        item3_coin1000 = 0;
+        item4_fast = 0;
+        item5_veryfast = 0;
+        getCoin = 0;
     }
 }

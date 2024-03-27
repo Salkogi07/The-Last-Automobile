@@ -19,12 +19,14 @@ public class FinishLine : MonoBehaviour
         {
             if (other.tag == "Player")
             {
+                gm.FinishGame();
                 uiManager.FinishGameWin();
                 gm.coin += 500;
                 finish = true;
             }
             else
             {
+                gm.FinishGame();
                 uiManager.FinishGameLose();
                 finish = true;
             }

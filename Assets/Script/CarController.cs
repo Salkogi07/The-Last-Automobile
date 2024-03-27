@@ -24,6 +24,7 @@ public class CarController : MonoBehaviour
     [SerializeField] private float maxSpeed;
     [SerializeField] private float steeringMax;
     [SerializeField] private float thrust;
+    private float originalMaxSpeed;
 
     private inputManager IM;
     public GameObject wheelMeshes, wheelColliders;
@@ -40,6 +41,7 @@ public class CarController : MonoBehaviour
     {
         getObjects();
         getFigure();
+        originalMaxSpeed = maxSpeed;
     }
 
     private void getObjects()
@@ -75,7 +77,8 @@ public class CarController : MonoBehaviour
             moterTorque = gm.moterTorque;
             maxSpeed = gm.maxSpeed;
             steeringMax = gm.steeringMax;
-            thrust = gm.thrust;
+            thrust = gm.thrust1;
+            thrust = gm.thrust2;
         }
         else if(gameObject.tag == "AI")
         {
@@ -213,5 +216,15 @@ public class CarController : MonoBehaviour
 
             slip[i] = wheelHit.sidewaysSlip;
         }
+    }
+
+    public void ApplySlowdown(float factor)
+    {
+        maxSpeed *= factor; // 속도 감속
+    }
+
+    public void RemoveSlowdown()
+    {
+        maxSpeed = originalMaxSpeed; // 속도를 원래대로 복구
     }
 }

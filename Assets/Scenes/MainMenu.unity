@@ -227,15 +227,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a03415ec9ca9f74b915aa76cd98bd12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rankScore: []
+  rankScoreStage1:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  rankScoreStage2:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  rankScoreStage3:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   stageLevel: 0
   coin: 0
+  item1_coin100: 0
+  coin_value1: 100
+  item2_coin500: 0
+  coin_value2: 500
+  item3_coin1000: 0
+  coin_value3: 1000
+  item4_fast: 0
+  fast_value1: 1000
+  item5_veryfast: 0
+  fast_value2: 2000
   breakPower: 0
   downForceValue: 50
   moterTorque: 700
   maxSpeed: 80
   steeringMax: 20
-  thrust: 1000
+  thrust1: 1000
+  thrust2: 3000
   AI_breakPower: 900000
   AI_downForceValue: 50
   AI_moterTorque: 2000
@@ -6437,8 +6465,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 21800859}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 760594026}
+        m_TargetAssemblyTypeName: MainMenu_UIManager, Assembly-CSharp
         m_MethodName: LoadStage1
         m_Mode: 1
         m_Arguments:
@@ -7888,5 +7916,5 @@ SceneRoots:
   - {fileID: 1717857682}
   - {fileID: 579600485}
   - {fileID: 636326053}
-  - {fileID: 21800860}
   - {fileID: 760594027}
+  - {fileID: 21800860}

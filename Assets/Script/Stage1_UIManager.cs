@@ -6,28 +6,31 @@ using UnityEngine.UI;
 
 public class Stage1_UIManager : MonoBehaviour
 {
+    private GameManager gm;
     private CarController RR;
     private inputManager inputManager;
 
-    public Image resultImage;
-    public Image loseImage;
-    public Text resultTime;
+    public Image ImgResult;
+    public Image ImgLose;
+    public Text textResultTime;
+    public Text[] textResult;
 
     //public GameObject neeedle;
-    private Text speedText;
+    private Text textSpeed;
 
     public float vehicleSpeed;
 
 
-    public Text timerText;
+    public Text textTimer;
     private float startTime;
     private bool isFinished = true;
 
     private void Awake()
     {
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         RR = GameObject.FindWithTag("Player").GetComponent<CarController>();
         inputManager = GameObject.FindWithTag("Player").GetComponent<inputManager>();
-        speedText = GameObject.Find("speed").GetComponent<Text>();
+        textSpeed = GameObject.Find("speed").GetComponent<Text>();
     }
 
     private void Update()
@@ -41,19 +44,19 @@ public class Stage1_UIManager : MonoBehaviour
             string minutes = ((int)elapsedTime / 60).ToString("00");
             string seconds = (elapsedTime % 60).ToString("00");
             string milliseconds = ((elapsedTime * 100) % 100).ToString("00");
-            timerText.text = minutes + ":" + seconds + ":" + milliseconds;
+            textTimer.text = minutes + ":" + seconds + ":" + milliseconds;
         }
     }
 
     public void updateNeedle()
     {
-        speedText.text = (int)vehicleSpeed + "km/h";
+        textSpeed.text = (int)vehicleSpeed + "km/h";
     }
 
     public void FinishGameLose()
     {
         FinishTimer();
-        loseImage.gameObject.SetActive(true);
+        ImgLose.gameObject.SetActive(true);
         inputManager.handbrake = true;
         inputManager.enabled = false;
     }
@@ -61,7 +64,8 @@ public class Stage1_UIManager : MonoBehaviour
     public void FinishGameWin()
     {
         FinishTimer();
-        resultImage.gameObject.SetActive(true);
+        textResult[0].text = gm.item1_coin100 + "만원";
+        ImgResult.gameObject.SetActive(true);
         inputManager.handbrake = true;
         inputManager.enabled = false;
     }
@@ -75,7 +79,7 @@ public class Stage1_UIManager : MonoBehaviour
     public void FinishTimer()
     {
         isFinished = true;
-        resultTime.text = timerText.text;
+        textResultTime.text = textTimer.text;
         // 여기에 게임이 종료될 때의 처리를 추가하세요.
     }
 

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenu_UIManager : MonoBehaviour
@@ -309,5 +310,10 @@ public class MainMenu_UIManager : MonoBehaviour
         {
             img.color = new Color(164/255f,169/255f,170/255f);
         }
+    }
+
+    public void LoadStage1()
+    {
+        SceneManager.LoadScene("Stage1");
     }
 }
