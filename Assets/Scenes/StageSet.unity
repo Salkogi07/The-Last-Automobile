@@ -198,6 +198,93 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 120902214}
   m_CullTransparentMesh: 1
+--- !u!1 &164359498
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 164359500}
+  - component: {fileID: 164359499}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &164359499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164359498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a03415ec9ca9f74b915aa76cd98bd12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rankScoreStage1: []
+  rankScoreStage2: []
+  rankScoreStage3: []
+  stage1: 0
+  stage2: 0
+  stage3: 0
+  coin: 0
+  getCoin: 0
+  item1_coin100: 0
+  coin_value1: 100
+  item2_coin500: 0
+  coin_value2: 500
+  item3_coin1000: 0
+  coin_value3: 1000
+  item4_fast: 0
+  fast_value1: 1000
+  item5_veryfast: 0
+  fast_value2: 2000
+  breakPower: 0
+  downForceValue: 50
+  moterTorque: 700
+  maxSpeed: 80
+  steeringMax: 20
+  thrust1: 1000
+  thrust2: 3000
+  desrtWheel_buy: 0
+  desrtWheel_buy_coin: 300
+  mountainsWheel_buy: 0
+  mountainsWheel_buy_coin: 300
+  cityWheel_buy: 0
+  cityWheel_buy_coin: 300
+  engine6_buy: 0
+  engine6_buy_coin: 1000
+  engine8_buy: 0
+  engine8_buy_coin: 5000
+  breakPart_buy: 0
+  breakPart_buy_coin: 200
+  desrtWheel: 0
+  mountainsWheel: 0
+  cityWheel: 0
+  engine6: 0
+  engine8: 0
+  breakPart: 0
+--- !u!4 &164359500
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164359498}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 452.5, y: 207.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &375618502
 GameObject:
   m_ObjectHideFlags: 0
@@ -1745,3 +1832,4 @@ SceneRoots:
   - {fileID: 388292128}
   - {fileID: 658525397}
   - {fileID: 2043314378}
+  - {fileID: 164359500}
