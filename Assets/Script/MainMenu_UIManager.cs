@@ -316,4 +316,9 @@ public class MainMenu_UIManager : MonoBehaviour
     {
         SceneManager.LoadScene("Stage1");
     }
+
+    public void SetStage()
+    {
+        SceneManager.LoadScene("StageSet");
+    }
 }
