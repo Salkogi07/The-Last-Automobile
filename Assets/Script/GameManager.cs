@@ -10,7 +10,9 @@ public class GameManager : MonoBehaviour
     public float[] rankScoreStage1 = new float[5];
     public float[] rankScoreStage2 = new float[5];
     public float[] rankScoreStage3 = new float[5];
-    public int stageLevel = 0;
+    public bool stage1 = false;
+    public bool stage2 = false;
+    public bool stage3 = false;
     public int coin = 0;
     public int getCoin = 0;
 
