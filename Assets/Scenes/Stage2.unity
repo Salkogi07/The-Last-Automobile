@@ -14614,6 +14614,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666847dde01213743a46f612b31faf28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isboost: 0
   defaltFOV: 0
   desriedFOV: 120
   smothTime: 5
@@ -20414,7 +20415,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1157249065}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1803359451}
+        m_TargetAssemblyTypeName: Stage1_UIManager, Assembly-CSharp
+        m_MethodName: LoadStage3
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1157249065
 MonoBehaviour:
   m_ObjectHideFlags: 0

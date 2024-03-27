@@ -106,4 +106,9 @@ public class Stage1_UIManager : MonoBehaviour
     {
         SceneManager.LoadScene("Stage2");
     }
+
+    public void LoadStage3()
+    {
+        SceneManager.LoadScene("Stage3");
+    }
 }
