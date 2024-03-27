@@ -12,6 +12,7 @@ public class CameraCotroller : MonoBehaviour
     private GameObject camerralookAt;
 
     private float speed = 0;
+    public bool isboost = false;
     public float defaltFOV = 0, desriedFOV = 0;
     [Range(0,5)]public float smothTime = 0;
 
@@ -40,7 +41,7 @@ public class CameraCotroller : MonoBehaviour
 
     private void boostFOV()
     {
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (isboost)
         {
             Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, desriedFOV, Time.deltaTime * smothTime);
         }

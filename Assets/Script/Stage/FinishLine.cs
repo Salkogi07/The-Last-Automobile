@@ -7,6 +7,7 @@ public class FinishLine : MonoBehaviour
     private GameManager gm;
     private Stage1_UIManager uiManager;
     bool finish = false;
+    public int coin;
 
     private void Awake()
     {
@@ -19,14 +20,12 @@ public class FinishLine : MonoBehaviour
         {
             if (other.tag == "Player")
             {
-                gm.FinishGame();
                 uiManager.FinishGameWin();
-                gm.coin += 500;
+                gm.coin += coin;
                 finish = true;
             }
             else
             {
-                gm.FinishGame();
                 uiManager.FinishGameLose();
                 finish = true;
             }

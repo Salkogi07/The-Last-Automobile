@@ -52,6 +52,21 @@ public class Stage1_UIManager : MonoBehaviour
     {
         textSpeed.text = (int)vehicleSpeed + "km/h";
     }
+    public void FinishGameWin()
+    {
+        FinishTimer();
+        gm.FinishGame();
+        textResult[0].text = "100¸¸¿ø È¹µæ : " + gm.item1_coin100;
+        textResult[1].text = "500¸¸¿ø È¹µæ : " + gm.item2_coin500;
+        textResult[2].text = "1000¸¸¿ø È¹µæ : " + gm.item3_coin1000;
+        textResult[3].text = "¼ø°£ ¼Óµµ ¼ÒÆø Áõ°¡ : " + gm.item4_fast;
+        textResult[4].text = "¼ø°£ ¼Óµµ ´ëÆø Áõ°¡ : " + gm.item5_veryfast;
+        textResult[5].text = "¾ÆÀÌÅÛÀ¸·Î È¹µæÇÑ ±Ý¾× : " + gm.getCoin + "¸¸¿ø";
+        ImgResult.gameObject.SetActive(true);
+        inputManager.handbrake = true;
+        inputManager.enabled = false;
+        gm.resetGame();
+    }
 
     public void FinishGameLose()
     {
@@ -59,16 +74,9 @@ public class Stage1_UIManager : MonoBehaviour
         ImgLose.gameObject.SetActive(true);
         inputManager.handbrake = true;
         inputManager.enabled = false;
+        gm.resetGame();
     }
 
-    public void FinishGameWin()
-    {
-        FinishTimer();
-        textResult[0].text = gm.item1_coin100 + "¸¸¿ø";
-        ImgResult.gameObject.SetActive(true);
-        inputManager.handbrake = true;
-        inputManager.enabled = false;
-    }
 
     public void StartTimer()
     {
@@ -92,5 +100,10 @@ public class Stage1_UIManager : MonoBehaviour
     public void LoadStage1()
     {
         SceneManager.LoadScene("Stage1");
+    }
+
+    public void LoadStage2()
+    {
+        SceneManager.LoadScene("Stage2");
     }
 }

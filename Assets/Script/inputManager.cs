@@ -55,7 +55,6 @@ public class inputManager : MonoBehaviour
         vertical = Input.GetAxis("Vertical");
         horizontal = Input.GetAxis("Horizontal");
         handbrake = (Input.GetAxis("Jump") != 0) ? true : false;
-       // if (Input.GetKey(KeyCode.LeftShift)) boosting = true; else boosting = false;
     }
 
     private void calculateDistanceOfWaypoints()

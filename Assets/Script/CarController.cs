@@ -80,15 +80,6 @@ public class CarController : MonoBehaviour
             thrust = gm.thrust1;
             thrust = gm.thrust2;
         }
-        else if(gameObject.tag == "AI")
-        {
-            breakPower = gm.AI_breakPower;
-            downForceValue = gm.AI_downForceValue;
-            moterTorque = gm.AI_moterTorque;
-            maxSpeed = gm.AI_maxSpeed;
-            steeringMax = gm.AI_steeringMax;
-            thrust = gm.AI_thrust;
-        }
         else
         {
             Debug.LogError("AI 또는 Player태그가 잘못됨");

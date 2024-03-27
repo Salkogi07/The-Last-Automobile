@@ -10,6 +10,7 @@ public class StartManager : MonoBehaviour
     private inputManager Player;
     private inputManager AI;
     private Text Countdown;
+
     private void Awake()
     {
         uiManager = GameObject.Find("UIManager").GetComponent<Stage1_UIManager>();
@@ -17,7 +18,7 @@ public class StartManager : MonoBehaviour
         Player.enabled = false;
         AI = GameObject.FindGameObjectWithTag("AI").GetComponent<inputManager>();
         AI.enabled = false;
-        Countdown = GameObject.Find("Count").GetComponent<Text>();
+        Countdown = GameObject.Find("Countdown").GetComponent<Text>();
     }
     void Start()
     {

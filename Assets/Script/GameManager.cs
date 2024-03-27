@@ -39,14 +39,6 @@ public class GameManager : MonoBehaviour
     public float thrust1 = 1000f;
     public float thrust2 = 3000f;
 
-    [Header("AI Car")]
-    public float AI_breakPower = 900000f;
-    public float AI_downForceValue = 50f;
-    public int AI_moterTorque = 2000;
-    public float AI_maxSpeed = 100f;
-    public float AI_steeringMax = 20f;
-    public float AI_thrust = 1000f;
-
     [Header("Store")]
     public bool desrtWheel_buy = false;
     public int desrtWheel_buy_coin = 300;
@@ -121,7 +113,10 @@ public class GameManager : MonoBehaviour
         int coin1000 = item3_coin1000 * coin_value3;
         getCoin = coin100 + coin500 + coin1000;
         coin = coin + getCoin;
+    }
 
+    public void resetGame()
+    {
         item1_coin100 = 0;
         item2_coin500 = 0;
         item3_coin1000 = 0;
