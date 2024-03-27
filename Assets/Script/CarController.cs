@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
-    private GameManager gm;
-
     internal enum driveType
     {
         frontWheelDriv,
@@ -46,11 +44,8 @@ public class CarController : MonoBehaviour
 
     private void getObjects()
     {
-        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         IM = GetComponent<inputManager>();
         rigidbody = GetComponent<Rigidbody>();
-        //wheelColliders = GameObject.Find("colliders");
-        //wheelMeshes = GameObject.Find("meshes");
         wheels[0] = wheelColliders.transform.Find("0").gameObject.GetComponent<WheelCollider>();
         wheels[1] = wheelColliders.transform.Find("1").gameObject.GetComponent<WheelCollider>();
         wheels[2] = wheelColliders.transform.Find("2").gameObject.GetComponent<WheelCollider>();
@@ -61,10 +56,6 @@ public class CarController : MonoBehaviour
         wheelMesh[2] = wheelMeshes.transform.Find("2").gameObject;
         wheelMesh[3] = wheelMeshes.transform.Find("3").gameObject;
 
-
-
-
-        //centerOfMass = GameObject.Find("mass");
         rigidbody.centerOfMass = centerOfMass.transform.localPosition;
     }
 
@@ -72,17 +63,13 @@ public class CarController : MonoBehaviour
     {
         if(gameObject.tag == "Player")
         {
-            breakPower = gm.breakPower;
-            downForceValue = gm.downForceValue;
-            moterTorque = gm.moterTorque;
-            maxSpeed = gm.maxSpeed;
-            steeringMax = gm.steeringMax;
-            thrust = gm.thrust1;
-            thrust = gm.thrust2;
-        }
-        else
-        {
-            Debug.LogError("AI 또는 Player태그가 잘못됨");
+            breakPower = GameManager.instance.breakPower;
+            downForceValue = GameManager.instance.downForceValue;
+            moterTorque = GameManager.instance.moterTorque;
+            maxSpeed = GameManager.instance.maxSpeed;
+            steeringMax = GameManager.instance.steeringMax;
+            thrust = GameManager.instance.thrust1;
+            thrust = GameManager.instance.thrust2;
         }
     }
     private void FixedUpdate()

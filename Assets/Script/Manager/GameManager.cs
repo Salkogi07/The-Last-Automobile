@@ -6,10 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+
     [Header("System")]
-    public float[] rankScoreStage1 = new float[5];
-    public float[] rankScoreStage2 = new float[5];
-    public float[] rankScoreStage3 = new float[5];
+    public List<float> rankScoreStage1;
+    public List<float> rankScoreStage2;
+    public List<float> rankScoreStage3;
     public bool stage1 = false;
     public bool stage2 = false;
     public bool stage3 = false;
@@ -70,7 +72,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        instance = this;
     }
 
     public void CheckStatePart()
@@ -97,14 +99,6 @@ public class GameManager : MonoBehaviour
         else
         {
             breakPower = 0f;
-        }
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene("Stage1");
         }
     }
 

@@ -2,26 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FinishLine : MonoBehaviour
+public class FinishLineStage2 : MonoBehaviour
 {
-    private GameManager gm;
-    private Stage1_UIManager uiManager;
+    private UIManager uiManager;
     bool finish = false;
     public int coin;
 
     private void Awake()
     {
-        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        uiManager = GameObject.Find("UIManager").GetComponent<Stage1_UIManager>();
+        uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(!finish)
+        if (!finish)
         {
             if (other.tag == "Player")
             {
                 uiManager.FinishGameWin();
-                gm.coin += coin;
+                GameManager.instance.coin += coin;
+                GameManager.instance.stage3 = true;
                 finish = true;
             }
             else
@@ -32,3 +31,4 @@ public class FinishLine : MonoBehaviour
         }
     }
 }
+

@@ -6,14 +6,14 @@ using UnityEngine.UI;
 
 public class StartManager : MonoBehaviour
 {
-    private Stage1_UIManager uiManager;
+    private UIManager uiManager;
     private inputManager Player;
     private inputManager AI;
     private Text Countdown;
 
     private void Awake()
     {
-        uiManager = GameObject.Find("UIManager").GetComponent<Stage1_UIManager>();
+        uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
         Player = GameObject.FindGameObjectWithTag("Player").GetComponent<inputManager>();
         Player.enabled = false;
         AI = GameObject.FindGameObjectWithTag("AI").GetComponent<inputManager>();

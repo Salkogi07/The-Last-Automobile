@@ -5,12 +5,6 @@ using UnityEngine;
 public class ItemCoin : MonoBehaviour
 {
     [SerializeField] int index = 0;
-    private GameManager gm;
-
-    private void Start()
-    {
-        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -18,17 +12,17 @@ public class ItemCoin : MonoBehaviour
         {
             if (index == 1)
             {
-                gm.item1_coin100++;
+                GameManager.instance.item1_coin100++;
                 Destroy(gameObject);
             }
             else if (index == 2)
             {
-                gm.item2_coin500++;
+                GameManager.instance.item2_coin500++;
                 Destroy(gameObject);
             }
             else if (index == 3)
             {
-                gm.item3_coin1000++;
+                GameManager.instance.item3_coin1000++;
                 Destroy(gameObject);
             }
         }

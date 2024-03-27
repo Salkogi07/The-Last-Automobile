@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: d340239fd4c58174980ef6d2d17818d4
   - enabled: 1
+    path: Assets/Scenes/StageSet.unity
+    guid: ae3cd290e848ddf4289d7ff470636de5
+  - enabled: 1
     path: Assets/Scenes/Stage1.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
@@ -17,5 +20,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Stage3.unity
     guid: d656b673f93419d4d85706429904d968
+  - enabled: 1
+    path: Assets/Scenes/Ending.unity
+    guid: e21aae9c8dc6d934fb21f7ef062778d3
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
