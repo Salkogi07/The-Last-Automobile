@@ -58,6 +58,13 @@ public class MainMenu_UIManager : MonoBehaviour
 
         SetCoin();
         SetPartCoin();
+        CheckStore();
+        WerePartCheeck(ImgDesrtWheel, GameManager.instance.desrtWheel);
+        WerePartCheeck(ImgMountainsWheel, GameManager.instance.mountainsWheel);
+        WerePartCheeck(ImgCityWheel, GameManager.instance.cityWheel);
+        WerePartCheeck(ImgEngine6, GameManager.instance.engine6);
+        WerePartCheeck(ImgEngine8, GameManager.instance.engine8);
+        WerePartCheeck(ImgBreakPart, GameManager.instance.breakPart);
     }
 
     private void SetPartCoin()
@@ -101,27 +108,27 @@ public class MainMenu_UIManager : MonoBehaviour
 
     private void CheckStore()
     {
-        if(GameManager.instance.desrtWheel == true)
+        if(GameManager.instance.desrtWheel_buy == true)
         {
             ImgDesrtWheel.gameObject.SetActive(true);
         }
-        if(GameManager.instance.mountainsWheel == true)
+        if(GameManager.instance.mountainsWheel_buy == true)
         {
             ImgMountainsWheel.gameObject.SetActive(true);
         }
-        if(GameManager.instance.cityWheel == true)
+        if(GameManager.instance.cityWheel_buy == true)
         {
             ImgCityWheel.gameObject.SetActive(true);
         }
-        if(GameManager.instance.engine6 == true)
+        if(GameManager.instance.engine6_buy == true)
         {
             ImgEngine6.gameObject.SetActive(true);
         }
-        if(GameManager.instance.engine8 == true)
+        if(GameManager.instance.engine8_buy == true)
         {
             ImgEngine8.gameObject.SetActive(true);
         }
-        if(GameManager.instance.breakPart == true)
+        if(GameManager.instance.breakPart_buy == true)
         {
             ImgBreakPart.gameObject.SetActive(true);
         }
@@ -139,7 +146,6 @@ public class MainMenu_UIManager : MonoBehaviour
         {
             if(GameManager.instance.desrtWheel_buy_coin <= GameManager.instance.coin)
             {
-                ImgDesrtWheel.gameObject.SetActive (true);
                 GameManager.instance.desrtWheel_buy = true;
                 GameManager.instance.coin -= GameManager.instance.desrtWheel_buy_coin;
                 SetMessage("구매에 성공하였습니다.");
@@ -161,7 +167,6 @@ public class MainMenu_UIManager : MonoBehaviour
         {
             if(GameManager.instance.mountainsWheel_buy_coin <= GameManager.instance.coin)
             {
-                ImgMountainsWheel.gameObject.SetActive(true);
                 GameManager.instance.mountainsWheel_buy = true;
                 GameManager.instance.coin -= GameManager.instance.mountainsWheel_buy_coin;
                 SetMessage("구매에 성공하였습니다.");
@@ -183,7 +188,6 @@ public class MainMenu_UIManager : MonoBehaviour
         {
             if(GameManager.instance.cityWheel_buy_coin <= GameManager.instance.coin)
             {
-                ImgCityWheel.gameObject.SetActive(true);
                 GameManager.instance.cityWheel_buy = true;
                 GameManager.instance.coin -= GameManager.instance.cityWheel_buy_coin;
                 SetMessage("구매에 성공하였습니다.");
@@ -205,7 +209,6 @@ public class MainMenu_UIManager : MonoBehaviour
         {
             if(GameManager.instance.engine6_buy_coin <= GameManager.instance.coin)
             {
-                ImgEngine6.gameObject.SetActive(true);
                 GameManager.instance.engine6_buy = true;
                 GameManager.instance.coin -= GameManager.instance.engine6_buy_coin;
                 SetMessage("구매에 성공하였습니다.");
@@ -227,7 +230,6 @@ public class MainMenu_UIManager : MonoBehaviour
         {
             if(GameManager.instance.engine8_buy_coin <= GameManager.instance.coin)
             {
-                ImgEngine8.gameObject.SetActive(true);
                 GameManager.instance.engine8_buy = true;
                 GameManager.instance.coin -= GameManager.instance.engine8_buy_coin;
                 SetMessage("구매에 성공하였습니다.");
@@ -249,7 +251,7 @@ public class MainMenu_UIManager : MonoBehaviour
         {
             if(GameManager.instance.breakPart_buy_coin <= GameManager.instance.coin)
             {
-                ImgBreakPart.gameObject.SetActive(true);
+
                 GameManager.instance.breakPart_buy = true;
                 GameManager.instance.coin -= GameManager.instance.breakPart_buy_coin;
                 SetMessage("구매에 성공하였습니다.");
