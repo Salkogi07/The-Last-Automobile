@@ -40,8 +40,8 @@ public class GameManager : MonoBehaviour
     public int moterTorque = 700;
     public float maxSpeed = 80f;
     public float steeringMax = 20f;
-    public float thrust1 = 1000f;
-    public float thrust2 = 3000f;
+    //public float thrust1 = 1000f;
+    //public float thrust2 = 3000f;
 
     [Header("Store")]
     public bool desrtWheel_buy = false;

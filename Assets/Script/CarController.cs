@@ -68,10 +68,9 @@ public class CarController : MonoBehaviour
             moterTorque = GameManager.instance.moterTorque;
             maxSpeed = GameManager.instance.maxSpeed;
             steeringMax = GameManager.instance.steeringMax;
-            thrust = GameManager.instance.thrust1;
-            thrust = GameManager.instance.thrust2;
         }
     }
+
     private void FixedUpdate()
     {
         addDownForce();
@@ -139,11 +138,6 @@ public class CarController : MonoBehaviour
                 if (ps.isPlaying)
                     ps.Stop();
             }
-        }
-
-        if (IM.boosting)
-        {
-            rigidbody.AddForce(Vector3.forward * thrust);
         }
     }
 
