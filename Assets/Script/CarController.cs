@@ -168,7 +168,7 @@ public class CarController : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             wheels[i].GetWorldPose(out wheelPosition, out wheelRotation);
-            wheelMesh[i].transform.position = wheelPosition;
+            //wheelMesh[i].transform.position = wheelPosition;
             wheelMesh[i].transform.rotation = wheelRotation;
         }
     }
