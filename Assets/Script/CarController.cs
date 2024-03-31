@@ -21,29 +21,48 @@ public class CarController : MonoBehaviour
     [SerializeField] private int moterTorque;
     [SerializeField] private float maxSpeed;
     [SerializeField] private float steeringMax;
-    [SerializeField] private float thrust;
+    [SerializeField] public float thrust;
     private float originalMaxSpeed;
 
     private inputManager IM;
+    private CameraCotroller camera;
     public GameObject wheelMeshes, wheelColliders;
     private WheelCollider[] wheels = new WheelCollider[4];
     private GameObject[] wheelMesh = new GameObject[4];
     public GameObject centerOfMass;
     public ParticleSystem[] dustTrial;
     private Rigidbody rigidbody;
+    private bool isBoosting = false;
+    public float effectDuration = 5f; // 아이템 효과가 지속되는 시간
+    public float speedMultiplier = 1f;
+    private float currenteffectDuration = 5f; // 아이템 효과가 지속되는 시간
 
     [Header("DEBUG")]
     public float[] slip = new float[4];
+
+    // 엔진 소리 관련 변수
+    public AudioSource engineSound;
+    public float minPitch = 0.8f;
+    public float maxPitch = 1.2f;
+    public float minVolume = 0.2f;
+    public float maxVolume = 0.5f;
 
     void Start()
     {
         getObjects();
         getFigure();
         originalMaxSpeed = maxSpeed;
+
+        // 엔진 소리 설정
+        engineSound.loop = true;
+        // 예를 들어, 엔진 소리 파일 설정
+        // engineSound.clip = yourEngineSoundClip;
+        engineSound.Play();
     }
 
     private void getObjects()
     {
+        camera = GameObject.Find("Main Camera").GetComponent<CameraCotroller>();
         IM = GetComponent<inputManager>();
         rigidbody = GetComponent<Rigidbody>();
         wheels[0] = wheelColliders.transform.Find("0").gameObject.GetComponent<WheelCollider>();
@@ -61,7 +80,7 @@ public class CarController : MonoBehaviour
 
     private void getFigure()
     {
-        if(gameObject.tag == "Player")
+        if (gameObject.tag == "Player")
         {
             breakPower = GameManager.instance.breakPower;
             downForceValue = GameManager.instance.downForceValue;
@@ -78,12 +97,14 @@ public class CarController : MonoBehaviour
         moveVchicle();
         steerVchicle();
         getFriction();
+
+        // 엔진 소리 조절
+        AdjustEngineSound();
     }
 
 
     private void moveVchicle()
     {
-
         // 현재 속도를 km/h로 변환
         KPH = rigidbody.velocity.magnitude * 3.6f;
 
@@ -99,14 +120,14 @@ public class CarController : MonoBehaviour
         {
             for (int i = 0; i < wheels.Length; i++)
             {
-                wheels[i].motorTorque = IM.vertical * (moterTorque / 4);
+                wheels[i].motorTorque = IM.vertical * (moterTorque / 4) * speedMultiplier;
             }
         }
         else if (drive == driveType.rearWheelDrive)
         {
             for (int i = 2; i < wheels.Length; i++)
             {
-                wheels[i].motorTorque = IM.vertical * (moterTorque / 2);
+                wheels[i].motorTorque = IM.vertical * (moterTorque / 2) * speedMultiplier;
             }
         }
         else
@@ -143,12 +164,12 @@ public class CarController : MonoBehaviour
 
     private void steerVchicle()
     {
-        if(IM.horizontal > 0)
+        if (IM.horizontal > 0)
         {
             wheels[0].steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / (radius + (1.5f / 2))) * IM.horizontal;
             wheels[1].steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / (radius - (1.5f / 2))) * IM.horizontal;
         }
-        else if(IM.horizontal < 0)
+        else if (IM.horizontal < 0)
         {
             wheels[0].steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / (radius - (1.5f / 2))) * IM.horizontal;
             wheels[1].steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / (radius + (1.5f / 2))) * IM.horizontal;
@@ -181,7 +202,7 @@ public class CarController : MonoBehaviour
 
     private void getFriction()
     {
-        for(int i = 0; i < wheels.Length; i++)
+        for (int i = 0; i < wheels.Length; i++)
         {
             WheelHit wheelHit;
             wheels[i].GetGroundHit(out wheelHit);
@@ -198,5 +219,44 @@ public class CarController : MonoBehaviour
     public void RemoveSlowdown()
     {
         maxSpeed = originalMaxSpeed; // 속도를 원래대로 복구
+    }
+
+    public void StartBoost()
+    {
+        if (!isBoosting)
+        {
+            isBoosting = true;
+            camera.isboost = true;
+            StartCoroutine(BoostTimer());
+        }
+    }
+
+    IEnumerator BoostTimer()
+    {
+        // 아이템 효과 활성화
+        while (currenteffectDuration > 0)
+        {
+            //rigidbody.AddForce(Vector3.forward * thrust);
+            //speedMultiplier = 10f;
+            currenteffectDuration -= Time.deltaTime;
+            yield return null;
+        }
+        // 아이템 효과 비활성화
+        isBoosting = false;
+        camera.isboost = false;
+        speedMultiplier = 1f;
+        currenteffectDuration = effectDuration;
+    }
+
+    // 엔진 소리 조절
+    private void AdjustEngineSound()
+    {
+        // 현재 속도를 기반으로 엔진 소리의 pitch와 volume을 조절
+        float pitch = Mathf.Lerp(minPitch, maxPitch, KPH / maxSpeed);
+        float volume = Mathf.Lerp(minVolume, maxVolume, KPH / maxSpeed);
+
+        // pitch와 volume 설정
+        engineSound.pitch = pitch;
+        engineSound.volume = volume;
     }
 }

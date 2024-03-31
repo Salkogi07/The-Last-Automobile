@@ -120,6 +120,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08d5cc06faa2709489d80b703e96bab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectDuration: 5
-  thrust: 1000
   index: 1
+  thrust: 5
